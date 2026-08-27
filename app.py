@@ -12,7 +12,7 @@ import os
 # --- Konfigurasi Halaman ---
 st.set_page_config(
     page_title="Analisis Sentimen End-to-End",
-    page_icon="🤖",
+   # page_icon="",
     layout="wide"
 )
 
@@ -39,7 +39,7 @@ if 'label_encoder' not in st.session_state:
     st.session_state.label_encoder = None
 
 # --- Judul Aplikasi ---
-st.title("🤖 Analisis Sentimen Ulasan Film (ANN)")
+st.title("Analisis Sentimen Ulasan Film (ANN)")
 st.subheader("Studi Kasus oleh Kelompok 7 (Versi Interaktif)")
 
 # --- Tabs ---
@@ -104,10 +104,10 @@ with tab2:
             value_counts = df[label_column].value_counts()
             st.dataframe(value_counts)
             if len(value_counts) < 2:
-                st.error(f"❌ Kolom label '{label_column}' hanya punya {len(value_counts)} nilai unik.")
+                st.error(f"Kolom label '{label_column}' hanya punya {len(value_counts)} nilai unik.")
                 is_data_valid = False
             else:
-                st.success(f"✅ Data label valid ({len(value_counts)} kelas ditemukan).")
+                st.success(f"Data label valid ({len(value_counts)} kelas ditemukan).")
                 is_data_valid = True
         except Exception as e:
             st.error(f"Gagal membaca label: {e}")
@@ -169,7 +169,7 @@ with tab2:
                     joblib.dump(vectorizer, "tfidf_vectorizer.pkl")
                     joblib.dump(le, "label_encoder.pkl")
 
-                    st.success("✅ Model berhasil dilatih dan disimpan!")
+                    st.success("Model berhasil dilatih dan disimpan!")
                     st.info("Pindah ke tab '[ 3 ] Prediksi Sentimen' untuk uji prediksi.")
 
                 except Exception as e:
